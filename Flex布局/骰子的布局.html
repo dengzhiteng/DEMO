@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    ul{
+      width: 200px;
+      height: 200px;
+      margin: 100px auto;
+      background-color: #f1f1f1;
+      box-shadow: 2px 4px #333;
+      border: 1px solid #333;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: row;
+      justify-content:start;
+      /* align-items: center; */
+      align-content: space-around;
+      flex-flow: row wrap;
+    }
+    ul li.item{
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+  </ul>
+</body>
+</html>
