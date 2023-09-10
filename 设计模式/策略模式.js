@@ -1,12 +1,12 @@
 
-const doStatusZero=()=>{
+const doStatusZero = () => {
   return 0
 }
-const doStatusOne=()=>{
+const doStatusOne = () => {
   return 1
 }
 
-const doStatusTwo=()=>{
+const doStatusTwo = () => {
   return 2
 }
 
@@ -20,7 +20,7 @@ const statusMap = new Map([
 // console.log(statusMap.get('zero'));
 
 
-const type=1
+const type = 1
 // if(type===0){
 //   console.log(0);
 // }else if(type===1){
@@ -36,30 +36,30 @@ const type=1
 // }
 
 // 
-const typeMap=[
-[
-  0,()=>{
-    console.log(0);
-  },
-],
-[
-  1,()=>{
-    console.log(1);
-  },
-],
-[
-  2,()=>{
-    console.log(2);
-  },
-],
-[
-  3,()=>{
-    console.log(311);
-  },
-]
+const typeMap = [
+  [
+    0, () => {
+      console.log(0);
+    },
+  ],
+  [
+    1, () => {
+      console.log(1);
+    },
+  ],
+  [
+    2, () => {
+      console.log(2);
+    },
+  ],
+  [
+    3, () => {
+      console.log(311);
+    },
+  ]
 ]
 
-// for (const index in typeMap) { 
+// for (const index in typeMap) {
 //   const [key,actions] = typeMap[index]
 //   actions()
 // }
@@ -72,5 +72,6 @@ const typeMap=[
 // for (const [key,actions] of typeMap) {
 //   actions()
 // }
+
 
 

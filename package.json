@@ -1,0 +1,11 @@
+{
+  "name": "Demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dengzhiteng/Demo.git",
+  "author": "dengzhiteng <767423816@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
