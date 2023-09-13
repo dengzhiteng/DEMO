@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      height: 50px;
+      line-height: 50px;
+      background-color: #f1f1f1;
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    main nav {
+      float: left;
+      width: 200px;
+      background-color: yellow;
+      height: calc(100vh - 50px);
+    }
+
+    main nav ul {
+      list-style: none;
+    }
+
+    main nav ul li {
+      font-style: 14px;
+      line-height: 1.5;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    main nav ul li:hover {
+      background-color: yellowgreen;
+      color: #fff;
+    }
+
+    main aside {
+      float: left;
+      width: calc(100% - 200px);
+      background-color: #dcdcdc;
+      height: calc(100vh - 50px);
+    }
+  </style>
+</head>
+
+<body>
+  <header>header</header>
+  <main>
+    <nav>
+      <ul>
+        <li>用户管理</li>
+        <li>数据管理</li>
+        <li>权限管理</li>
+        <li>我的中心</li>
+      </ul>
+    </nav>
+    <aside>
+      right
+    </aside>
+  </main>
+</body>
+
+<script>
+  class PubSub {
+    constructor() {
+      this.message = {}
+    }
+    // 订阅
+    subscribe = (type, fn) => {
+      if (!type || !fn) return
+      this.message[type] ? this.message[type].push(fn) : this.message[type] = [fn]
+    }
+    // 取消订阅
+    unSubscribe = (type, fn) => {
+      if (!this.message[type]) return
+      if (fn) {
+        this.message[type] = this.message[type].filter(item => item !== fn)
+      } else {
+        this.message[type] = []
+      }
+    }
+    // 发布
+    publish = (type, data) => {
+      if (!this.message[type]) return
+      this.message[type].forEach(fn => {
+        fn(data)
+      })
+    }
+  }
+
+
+  const pubsub = new PubSub()
+  pubsub.subscribe("asside", function (msg) {
+    const aside = document.getElementsByTagName("aside")[0]
+    aside.innerText = msg
+  })
+  pubsub.subscribe("header", function (msg) {
+    const header = document.getElementsByTagName("header")[0]
+    header.innerText = msg
+  })
+  // 发布事件
+  const navLi = document.getElementsByTagName("li")
+  const text = navLi[0].innerText
+  pubsub.publish("asside", text)
+  pubsub.publish("header", text)
+
+  for (var i = 0; i < navLi.length; i++) {
+    const element = navLi[i]
+    element.addEventListener("click", function () {
+      const text = this.innerText
+      pubsub.publish("asside", text)
+      pubsub.publish("header", text)
+    })
+  }
+
+</script>
+
+</html>
