@@ -34,9 +34,6 @@ class Queue {
 }
 
 let queue = new Queue()
-
-
-
 const Game = (list, num) => {
   const queue = new Queue()
   for (let item of list) {
@@ -46,3 +43,4 @@ const Game = (list, num) => {
 
 const arr = ["唐僧", "悟净", "猪八戒", "孙悟空", "张居正", "杨莲", "贾宝玉", "武松", "潘金莲", "李大钊"]
 Game(arr)
+
