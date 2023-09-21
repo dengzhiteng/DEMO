@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建二叉树</title>
+</head>
+
+<body>
+  <script>
+    const Compare = {
+      less: -1,
+      equal: 0,
+      bigger: 1
+    }
+    class Node {
+      constructor(key) {
+        this.key = key
+        this.left = null
+        this.right = null
+      }
+    }
+    class BST {
+      constructor() {
+        this.root = null
+      }
+      useCompare (a, b) {
+        if (a === b) return Compare.equal
+        return a > b ? Compare.bigger : Compare.less
+      }
+      insertNode (node, key) {
+        if (this.useCompare(key,node.left) === Compare.less) {
+            if(node.left===null){
+              node.left = new Node(key)
+            }else{
+              this.insertNode(node.left,key)
+            }
+        }else{
+          if(node.right==null){
+            node.right = new Node(key)
+          }else{
+            this.insertNode(node.right,key)
+          }
+        }
+      }
+      insert (key) {
+        if (this.root === null) {
+          this.root = new Node(key)
+        } else {
+          this.insertNode(this.root, key)
+        }
+      }
+    }
+    const bst = new BST()
+  </script>
+</body>
+
+</html>

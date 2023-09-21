@@ -93,10 +93,3 @@ const getOwnerAfter = (projectName) => {
   return map[projectName] || '小马哥'
 }
 
-
-
-
-
-
-
-

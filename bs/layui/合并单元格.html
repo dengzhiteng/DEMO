@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>layui 调试预览</title>
+
+  <link rel="stylesheet" href="//res.ilayuis.com/layui/dist/css/layui.css"
+    tppabs="//res.ilayuis.com/layui/dist/css/layui.css?t=1632428048355" media="all">
+  <style>
+    body {
+      margin: 10px;
+    }
+
+    .demo-carousel {
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <table class="layui-hide" id="demo" lay-filter="test"></table>
+  <script src="./jquery/jquery.min-3.5.1.js"></script>
+  <script src="//res.ilayuis.com/layui/dist/layui.js"></script>
+  <script>
+    // 使用 Layui 的数据表格模块
+    layui.use('table', function () {
+      var table = layui.table;
+
+      // 渲染表格
+      table.render({
+        elem: '#demo',
+        cols: [[
+          { field: 'name', title: '姓名', rowspan: 2 },
+          { field: 'age', title: '年龄' },
+          { field: 'city', title: '城市' },
+        ]],
+        data: [
+          { name: '张三', age: 25, city: '北京' },
+          { name: '李四', age: 30, city: '上海' },
+          { name: '张三', age: 28, city: '广州' },
+          { name: '王五', age: 22, city: '深圳' },
+        ],
+        done: function (res, curr, count) { }
+      });
+    });
+  </script>
+</body>
+
+</html>

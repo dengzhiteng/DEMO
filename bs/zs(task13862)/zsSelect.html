@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./static/framework/bootstrap/css/bootstrap.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .vaccBox p {
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+
+    .vaccBox {
+      width: 500px;
+      margin: 100px auto;
+    }
+
+    .vaccHeader {
+      display: flex;
+      line-height: 30px;
+      position: relative;
+    }
+
+    .vaccHeader label {
+      width: 70px;
+      margin: 0;
+    }
+
+    .vaccHeader input {
+      flex: 1;
+      border-radius: 5px;
+      border: 1px solid #dcdcdc;
+      outline: none;
+      padding-left: 10px;
+    }
+
+    input::placeholder,
+    input::-webkit-input-placeholder {
+      color: #dcdcdc;
+    }
+
+    .vaccHeader .arrow {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 0 5px 5px;
+      border-color: transparent transparent transparent #dcdcdc;
+      transform: rotate(90deg);
+      animation: all 1s ease-in;
+      position: absolute;
+      right: 13px;
+      top: 10px;
+    }
+
+    .vaccBox .vaccList {
+      margin-top: 1px;
+      width: calc(100% - 70px);
+      margin-left: 70px;
+      border: 1px solid #dcdcdc;
+      border-radius: 5px;
+      max-height: 500px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .vaccBox .vaccList ul {
+      margin: 0;
+    }
+
+    .vaccBox .vaccList li {
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+
+    .vaccBox .vaccList li.disable {
+      background-color: #f2f2f2;
+    }
+
+    .vaccBox .vaccList li.disable .title {
+      color: #c1c1c1;
+    }
+
+    .vaccBox .vaccList li:hover {
+      background-color: #f2f2f2;
+    }
+
+    .vaccBox .vaccList li .title {
+      color: #777777;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .vaccBox .vaccList li .desc {
+      color: #c1c1c1;
+      font-size: 12px;
+      margin-top: 5px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .vaccBox .vaccList .noData {
+      padding-left: 10px;
+      line-height: 30px;
+      color: #777777;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="vaccBox">
+    <div class="vaccHeader">
+      <label>疫苗信息:</label>
+      <input type="hidden" id="vaccCode">
+      <input type="text" id="vaccKeyWords" placeholder="请输入关键字进行检索">
+      <span class="arrow"></span>
+    </div>
+    <div class="vaccList">
+      <ul></ul>
+    </div>
+  </div>
+
+  <script src="./static/framework/jquery/jquery.min.js"></script>
+  <script>
+    var vaccList = [
+      {
+        isDisable: false,
+        vaccCode: '2',
+        title: 'A19020-乙肝-艾美诚信-55元',
+        desc: '少时诵诗书三生三世三生三世是事实,少时诵诗书三生三世三生三世是事实,'
+      },
+      {
+        isDisable: false,
+        vaccCode: '1',
+        title: 'A19020-卡介苗-艾美诚信-55元',
+        desc: '少时诵诗书三生三世三生三世是事实,少时诵诗书三生三世三生三世是事实,'
+
+      },
+      {
+        isDisable: false,
+        vaccCode: '3',
+        title: 'A19020-二价-艾美诚信-55元',
+        desc: '少时诵诗书三生三世三生三世是事实,少时诵诗书三生三世三生三世是事实,'
+      },
+      {
+        isDisable: false,
+        vaccCode: '44',
+        title: 'A19020-乙肝-艾美诚信-55元',
+        desc: '少时诵诗书三生三世三生三世是事实,少时诵诗书三生三世三生三世是事实,'
+      },
+      {
+        isDisable: false,
+        vaccCode: '555',
+        title: 'A19020-乙肝-艾美诚信-55元',
+        desc: '少时诵诗书三生三世三生三世是事实,少时诵诗书三生三世三生三世是事实,'
+      },
+      {
+        isDisable: false,
+        vaccCode: '666',
+        title: 'A19020-乙肝-艾美诚信-55元',
+        desc: '少时诵诗书三生三世三生三世是事实,少时诵诗书三生三世三生三世是事实,'
+      },
+      {
+        isDisable: false,
+        vaccCode: '77',
+        title: 'A19020-乙肝-艾美诚信-55元',
+        desc: '少时诵诗书三生三世三生三世是事实,少时诵诗书三生三世三生三世是事实,'
+      },
+      {
+        isDisable: false,
+        vaccCode: '999',
+        title: 'A19020-乙肝-艾美诚信-55元',
+        desc: '少时诵诗书三生三世三生三世是事实,少时诵诗书三生三世三生三世是事实,'
+      },
+      {
+        isDisable: false,
+        vaccCode: '44',
+        title: 'A19020-乙肝-艾美诚信-55元',
+        desc: '少时诵诗书三生三世三生三世是事实,少时诵诗书三生三世三生三世是事实,'
+      },
+      {
+        isDisable: true,
+        vaccCode: '33333',
+        title: 'A19020-乙肝-艾美诚信-55元',
+        desc: '未绑定品规信息'
+      },
+    ]
+    $("#vaccKeyWords").on("blur", function () {
+      var vaccKeyWords = $(this).val()
+      var index = vaccList.findIndex(item => item.title == vaccKeyWords)
+      if (index == -1) {
+        $(this).val("")
+        $("#vaccCode").val("")
+      }
+      setTimeout(() => {
+        vaccListToggleShow("hide")
+      }, 500);
+    })
+
+    /**
+     * @Descripttion: 检索疫苗信息关键字
+     */
+    $("#vaccKeyWords").on("input focus", function () {
+      var keyWord = $(this).val()
+      keyWord = $.trim(keyWord)
+      var arr = vaccList.filter(item => {
+        return item.title.indexOf(keyWord) != -1
+      })
+      console.log(arr);
+      renderVaccList(arr)
+      return false
+    })
+
+    /**
+     * @Descripttion: 渲染疫苗信息
+     * @Author: dzt
+     * @param {* arr } 疫苗信息列表
+     */
+    function renderVaccList (arr) {
+      var listr = ''
+      arr.forEach(item => {
+        if (item.isDisable) {
+          listr += ` <li class="disable"  data-isDisable=${item.isDisable} data-vaccCode=${item.vaccCode} data-title=${item.title}>  
+            <p class="title">${item.title}</p>
+            <p class="desc">${item.desc}</p> 
+            </li>`
+        } else {
+          listr += ` <li  data-isDisable=${item.isDisable} data-vaccCode=${item.vaccCode} data-title=${item.title}>  
+            <p class="title">${item.title}</p>
+            <p class="desc">${item.desc}</p> 
+            </li>`
+        }
+      })
+      if (listr) {
+        $(".vaccBox .vaccList ul").html(listr)
+        // 注册选择疫苗信息事件
+        selectVaccCodeEvent()
+      } else {
+        var noDataStr = '<p class="noData">换个关键字试试....</p>'
+        $(".vaccBox .vaccList ul").html(noDataStr)
+      }
+      vaccListToggleShow("show")
+    }
+
+    /**
+     * @Descripttion: 选择疫苗信息事件
+     */
+    function selectVaccCodeEvent () {
+      $(".vaccBox .vaccList ul li").click(function () {
+        var data = $(this).data()
+        if (data.isdisable) {
+          alert("不能选!!")
+          return false
+        }
+        $("#vaccKeyWords").val(data.title)
+        $("#vaccCode").val(data.vacccode)
+        vaccListToggleShow("hide")
+        return false
+      })
+    }
+
+    /**
+     * @Descripttion: 疫苗信息显示与隐藏操作
+     * @Author: dzt
+     * @param {*} type string 可取 show | hide
+     */
+    function vaccListToggleShow (type) {
+      if (type == 'show') {
+        $(".vaccBox .vaccList").show()
+        $(".vaccHeader .arrow").css({
+          transform: "rotate(-90deg)"
+        })
+      }
+      if (type == 'hide') {
+        $(".vaccBox .vaccList").hide()
+        $(".vaccHeader .arrow").css({
+          transform: "rotate(90deg)"
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>

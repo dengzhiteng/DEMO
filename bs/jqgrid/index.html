@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>table</title>
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+  <script src="./jquery/jquery.min-3.5.1.js"></script>
+  <script src="./bootstrap/js/bootstrap.js"></script>
+  <script src="./bootstrap-table/js/bootstrap-table.js"></script>
+</head>
+
+<body>
+  <table id="example_table"></table>
+  <script>
+
+    const data=[
+    {
+        id: 1,
+        name: "西瓜",
+        price: 1,
+        price1: 1,
+      },
+      {
+        id: 2,
+        name: "黄瓜",
+        price: 2,
+        price1: 1,
+      },
+      {
+        id: 3,
+        name: "香瓜",
+        price: 4,  price1: 1,
+      },
+    ]
+    const col = [
+      {
+        field: 'name',
+        title: '名称',
+      },
+      {
+        field: 'price',
+        title: '价格'
+      },
+      {
+        field: 'price1',
+        title: '价格1'
+      }
+    ]
+    
+  function priceFormatter(data) {
+    var field = this.field
+    return '$' + data.map(function (row) {
+      return +row[field].substring(1)
+    }).reduce(function (sum, i) {
+      return sum + i
+    }, 0)
+  }
+
+    $('#example_table').bootstrapTable({
+      showHeader: true,
+      showFooter: true,
+      data: data,
+      columns: col,
+      boder:true,
+      "footer": {
+        "id": "footer id",
+        "price": 2,
+        "name": "footer name"
+      }
+    });
+  </script>
+</body>
+
+</html>
