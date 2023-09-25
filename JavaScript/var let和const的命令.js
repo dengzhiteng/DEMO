@@ -116,10 +116,17 @@
 // const obj = { age: 1 }
 // obj = {}  //  Assignment to constant variable.
 
-var a = 1;
+// var a = 1;
 // 如果在 Node 的 REPL 环境，可以写成 global.a
 // 或者采用通用方法，写成 this.a
-console.log(window.a);
+// console.log(window.a);
 
-let b = 1;
-console.log(window.b);
+// let b = 1;
+// console.log(window.b);
+
+
+
+
+
+
+

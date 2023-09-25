@@ -1,0 +1,42 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('./assets/iconfont.ttf') format('truetype');
+}
+
+.icon {
+  font-family: "iconfont" !important;
+  font-size: 30px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: red;
+}
+
+body {
+  /* background-color: red; */
+}
+
+.div {
+  height: 200px;
+  background-color: aliceblue;
+}
+
+li.active {
+  font-size: 18px;
+  color: red;
+}
