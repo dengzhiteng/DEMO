@@ -2,21 +2,27 @@ class Stack {
   constructor() {
     this.items = []
   }
+  // 出栈
   pop () {
     return this.items.pop()
   }
+  // 添加一个元素到栈顶
   push (data) {
     this.items.push(data)
   }
+  // 返回栈顶
   peek () {
     return this.items.at(-1)
   }
+  // 是否为空
   isEmpty () {
     return this.items.length === 0
   }
+  // 大小
   size () {
     return this.items.length
   }
+  // 清空 
   clear () {
     this.items = []
   }

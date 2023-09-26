@@ -12,24 +12,28 @@
 
 <body>
     <script>
-       //ES6 Set
-       var myset = new Set()
-
-       myset.add(100)
-       myset.add(200)
-       myset.add(300)
-
-       var myiter = myset.values()
-    //    console.log(myiter.next())
-    //    console.log(myiter.next())
-    //    console.log(myiter.next())
-    //    console.log(myiter.next())
+        const sum1 = () => {
+            console.log("sum1");
+        }
+        const sum2 = () => {
+            console.log("sum2");
+        }
+        const sum3 = () => {
+            console.log("sum3");
+        }
+        const myset = new Set()
+        myset.add(sum1)
+        myset.add(sum2)
+        myset.add(sum3)
+        var myiter = myset.values()
+        for (let fn of myiter) {
+            fn()
+        }
 
         // for(let i of myiter){
         //     console.log(i)
         // }
-
-        console.log([...myiter])
+        // console.log([...myiter])
     </script>
 </body>
 

@@ -13,14 +13,11 @@
 <body>
     <div id="box"></div>
     <script>
-        let obj = {}
-
-        // let arr = [1,2,3] // push pop
-        // console.log(box)
-        Object.defineProperty(obj,"data",{
+        let obj = {age:1}
+        Object.defineProperty(obj,"age",{
             get(){
                 console.log("get")
-                return box.innerHTML
+                return 1
             },
             set(value){
                 console.log("set",value)
@@ -28,8 +25,8 @@
                 box.innerHTML = value
             }
         })
-
-        console.log(obj)
+        // obj.age = 2
+        console.log(obj.age);
     </script>
 </body>
 

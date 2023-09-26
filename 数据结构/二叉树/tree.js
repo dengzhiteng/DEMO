@@ -1,0 +1,80 @@
+
+const compare = {
+  less: -1,
+  equal: 0,
+  bigger: 1
+}
+class Node {
+  constructor(key) {
+    this.key = key
+    this.left = null
+    this.right = null
+  }
+}
+class BST {
+  constructor() {
+    this.root = null
+
+  }
+  useCompare (key, node) {
+    if (key === node.key) {
+      return compare.equal
+    }
+    return key > node.key ? compare.bigger : compare.less
+  }
+  insert (key) {
+    if (this.root === null) {
+      this.root = new Node(key)
+    } else {
+      this.insertNode(this.root, key)
+    }
+  }
+  insertNode (node, key) {
+    if (this.useCompare(key, node) === compare.less) {
+      if (node.left === null) {
+        node.left = new Node(key)
+      } else {
+        this.insertNode(node.left, key)
+      }
+    } else {
+      if (node.right === null) {
+        node.right = new Node(key)
+      } else {
+        this.insertNode(node.right, key)
+      }
+    }
+  }
+  // 先序二叉树:根节点==>遍历左边树==>遍历右边树
+  preOrderTree (callback) {
+    this.preOrderTreeNode(this.root, callback)
+  }
+  preOrderTreeNode (node, callback) {
+    if (node != null) {
+      callback(node.key)
+      this.preOrderTreeNode(node.left, callback)
+      this.preOrderTreeNode(node.right, callback)
+    }
+  }
+  // 中序二叉树:遍历左边树==>根节点==>遍历右边的树
+  inOrderTree (callback) {
+    this.inOrderTreeNode(this.root, callback)
+  }
+  inOrderTreeNode (node, callback) {
+    if (node != null) {
+      this.inOrderTreeNode(node.left, callback)
+      callback(node.key)
+      this.inOrderTreeNode(node.right, callback)
+    }
+  }
+  // 后序二叉树:遍历左边树==>遍历右边树==>根节点
+  postOrderTree (callback) {
+    this.postOrderTreeNode(this.root, callback)
+  }
+  postOrderTreeNode (node, callback) {
+    if (node != null) {
+      this.postOrderTreeNode(node.left, callback)
+      this.postOrderTreeNode(node.right, callback)
+      callback(node.key)
+    }
+  }
+}
