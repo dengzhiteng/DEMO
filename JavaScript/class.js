@@ -14,10 +14,9 @@ class Boy extends Person {
     this.gender = "男";
   }
   like () {
-    console.log("打打球");
+    console.log("打球");
   }
 }
-
 
 class Girl extends Person {
   constructor(name, age) {
@@ -31,22 +30,22 @@ class Girl extends Person {
 
 
 const xiaoming = new Boy("小明", 19);
+console.log(xiaoming);
 const xiaohong = new Girl("小红", 18);
 
 // 发工资
-class Levl1 {
-  constructor() {
-    this.base = 12000
+{
+  class Levl1 {
+    constructor() {
+      this.base = 12000
+    }
+    getSalary (name, jx) {
+      const money = this.base + jx
+      const str = name + "本月的工资：" + money
+      console.log(str);
+      return str
+    }
   }
-  getSalary (name, jx) {
-    const money = this.base + jx
-    const str = name + "本月的工资：" + money
-    console.log(str);
-    return str
-  }
+  const levl1 = new Levl1()
+  levl1.getSalary("张三", 1000)
 }
-
-const levl1 = new Levl1()
-levl1.getSalary("张三", 1000)
-
-
